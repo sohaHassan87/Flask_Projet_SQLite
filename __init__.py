@@ -79,8 +79,3 @@ def enregistrer_client():
                                                                                                                                        
 if __name__ == "__main__":
   app.run(debug=True)
-    conn.close()
-    return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
-                                                                                                                                       
-if __name__ == "__main__":
-  app.run(debug=True)
