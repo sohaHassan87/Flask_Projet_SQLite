@@ -25,6 +25,8 @@ def lecture():
   # Si l'utilisateur est authentifié
     return "<h2>Bravo, vous êtes authentifié</h2>"
 
+
+
 @app.route('/authentification', methods=['GET', 'POST'])
 def authentification():
     if request.method == 'POST':
@@ -57,6 +59,23 @@ def ReadBDD():
     data = cursor.fetchall()
     conn.close()
     return render_template('read_data.html', data=data)
+
+
+
+
+@app.route('/fiche_nom/<post_str>')
+def ReadficheN(post_str):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients WHERE nom = ?', (post_str,))
+    data = cursor.fetchall()
+    conn.close()
+    # Rendre le template HTML et transmettre les données
+    return render_template('read_data.html', data=data)
+
+
+
+
 
 @app.route('/enregistrer_client', methods=['GET'])
 def formulaire_client():
